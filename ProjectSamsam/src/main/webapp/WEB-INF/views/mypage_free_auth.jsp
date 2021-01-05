@@ -285,7 +285,15 @@ html,body {
 
 
 		<div class="section">
-			<%for (int i=0; i < myfree_doc_confirmVO.size(); i++) 
+		<%if (myfree_doc_confirmVO.isEmpty()) { %>
+			<br><br><br><br><br><br>
+			<h3>책임분양 받은 내역이 없습니다.</h3>
+			<br><br><br><hr width="100%">
+		
+		<%
+		}
+		else { 
+			for (int i=0; i < myfree_doc_confirmVO.size(); i++) 
 			{
 				Myfree_doc_confirmVO confirm_list = (Myfree_doc_confirmVO)myfree_doc_confirmVO.get(i);
 				Myfree_docVO doc_list=(Myfree_docVO)myfree_docVO.get(i);
@@ -431,7 +439,9 @@ html,body {
 			</table>
 							<%
 			}
+		}
 						%>
+					
 			
 			<br> <br>
 			<h3>작성한 책임분양글</h3>
