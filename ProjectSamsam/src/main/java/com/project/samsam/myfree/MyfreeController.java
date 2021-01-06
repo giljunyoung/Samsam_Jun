@@ -76,6 +76,11 @@ public class MyfreeController {
 		return null;
 	}
 	
+	//메인페이지
+	@RequestMapping("/mainpage.me")
+	public String mainpage() throws Exception {
+		return "mainpage";
+	}
 	
 	//마이페이지 책임분양
 	@RequestMapping("/myfree_auth.me")
