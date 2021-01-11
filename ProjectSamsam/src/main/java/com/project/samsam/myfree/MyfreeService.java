@@ -28,14 +28,14 @@ public interface MyfreeService {
 		public List<Myfree_docVO> selectDoc(String email);
 		
 		//책임분양 인증글 작성창 띄우기 - 책임분양인증현황 테이블 조회
-		public Myfree_doc_confirmVO selectConfirm_write(int confirm_no);
+		public Myfree_doc_confirmVO selectConfirm_write(String confirm_no);
 		
 		//책임분양 인증글 작성
 		public int insertFree_auth(Myfree_authVO myfree_authVO);
 		
 		//책임분양 인증글 조회
 		public Myfree_authVO selectAuth_view(int fadoc_no);
-		public Myfree_doc_confirmVO selectConfirm_view(int confirm_no);
+		public Myfree_doc_confirmVO selectConfirm_view(String confirm_no);
 		
 		//이미지 파일 업로드
 		public void update_fdoc_img(Myfree_doc_confirmVO myfree_doc_confirmVO);

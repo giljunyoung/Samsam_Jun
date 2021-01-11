@@ -31,7 +31,7 @@
 	</servlet-mapping>
 	
 	<welcome-file-list>
-		<welcome-file>/mainpage.me</welcome-file>	
+		<welcome-file>/loginform.me</welcome-file>	
 	</welcome-file-list>
 
 <!-- Korean Filter -->

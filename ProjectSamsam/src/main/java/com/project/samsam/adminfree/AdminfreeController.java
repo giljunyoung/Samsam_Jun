@@ -19,6 +19,7 @@ public class AdminfreeController {
 	@Autowired
 	private AdminfreeServiceImpl AdminfreeService;
 	
+	
 	//관리자 페이지 책임분양
 	@RequestMapping("/adminfree_auth.me")
 	public String getAuthlist(Model model, @RequestParam(value="page", required=false, 
@@ -52,7 +53,7 @@ public class AdminfreeController {
 	model.addAttribute("startpage", startpage);
 	model.addAttribute("endpage", endpage);
 
-	return "admin_free_auth";
+	return "adminpage/adminpage";
 	}
 	
 	
@@ -63,7 +64,7 @@ public class AdminfreeController {
 		int fadoc_no = auth_list.getFadoc_no();
 		Myfree_authVO myfree_auth_detail_re_re = AdminfreeService.selectAuth_detail_re_re(fadoc_no);
 		
-		int confirm_no = myfree_auth_detail_re_re.getFadoc_confirm_no();
+		String confirm_no = myfree_auth_detail_re_re.getFadoc_confirm_no();
 
 		Myfree_doc_confirmVO myfree_doc_confirm_detail = AdminfreeService.selectConfirm_detail(confirm_no);
 		
@@ -112,7 +113,7 @@ public class AdminfreeController {
 		int res = AdminfreeService.update_auth_ok(fadoc_no);
 		
 		Myfree_authVO myfree_auth_detail_re_re = AdminfreeService.selectAuth_detail_re_re(fadoc_no);	//myfree_doc_confirmVO 조회하기위해 필요
-		int confirm_no = myfree_auth_detail_re_re.getFadoc_confirm_no();
+		String confirm_no = myfree_auth_detail_re_re.getFadoc_confirm_no();
 		
 		List<Myfree_authVO> myfree_auth_detail_re = AdminfreeService.selectAuth_detail_re(confirm_no);
 		Myfree_doc_confirmVO myfree_doc_confirm_detail_re = AdminfreeService.selectConfirm_detail_re(confirm_no);
@@ -134,7 +135,7 @@ public class AdminfreeController {
 		int res = AdminfreeService.update_auth_re(fadoc_no);
 		
 		Myfree_authVO myfree_auth_detail_re_re = AdminfreeService.selectAuth_detail_re_re(fadoc_no);	//myfree_doc_confirmVO 조회하기위해 필요
-		int confirm_no = myfree_auth_detail_re_re.getFadoc_confirm_no();
+		String confirm_no = myfree_auth_detail_re_re.getFadoc_confirm_no();
 		
 		List<Myfree_authVO> myfree_auth_detail_re = AdminfreeService.selectAuth_detail_re(confirm_no);
 		Myfree_doc_confirmVO myfree_doc_confirm_detail_re = AdminfreeService.selectConfirm_detail_re(confirm_no);
@@ -155,7 +156,7 @@ public class AdminfreeController {
 		int res = AdminfreeService.update_auth_no(fadoc_no);
 		
 		Myfree_authVO myfree_auth_detail_re_re = AdminfreeService.selectAuth_detail_re_re(fadoc_no);	//myfree_doc_confirmVO 조회하기위해 필요
-		int confirm_no = myfree_auth_detail_re_re.getFadoc_confirm_no();
+		String confirm_no = myfree_auth_detail_re_re.getFadoc_confirm_no();
 		
 		List<Myfree_authVO> myfree_auth_detail_re = AdminfreeService.selectAuth_detail_re(confirm_no);
 		Myfree_doc_confirmVO myfree_doc_confirm_detail_re = AdminfreeService.selectConfirm_detail_re(confirm_no);

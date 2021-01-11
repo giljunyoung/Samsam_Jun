@@ -26,15 +26,17 @@ public interface MyfreeMapper {
 	//작성한 책임분양글 목록 조회
 	public List<Myfree_docVO> selectDoc(String email);
 	
+	
+	
 	//책임분양 인증글 작성창 띄우기 - 책임분양인증현황 테이블 조회
-	public Myfree_doc_confirmVO selectConfirm_write(int confirm_no);
+	public Myfree_doc_confirmVO selectConfirm_write(String confirm_no);
 	
 	//책임분양 인증글 작성
 	public int insertFree_auth(Myfree_authVO myfree_authVO);
 	
 	//책임분양 인증글 조회
 	public Myfree_authVO selectAuth_view(int fadoc_no);
-	public Myfree_doc_confirmVO selectConfirm_view(int confirm_no);
+	public Myfree_doc_confirmVO selectConfirm_view(String confirm_no);
 	public void setReadCountUpdate(int fadoc_no);
 	
 	//책임분양 이미지 업로드

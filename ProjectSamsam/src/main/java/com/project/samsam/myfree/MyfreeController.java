@@ -76,11 +76,6 @@ public class MyfreeController {
 		return null;
 	}
 	
-	//메인페이지
-	@RequestMapping("/mainpage.me")
-	public String mainpage() throws Exception {
-		return "mainpage";
-	}
 	
 	//마이페이지 책임분양
 	@RequestMapping("/myfree_auth.me")
@@ -108,6 +103,8 @@ public class MyfreeController {
 		return "mypage_free_auth";
 	}
 	
+	//환급계좌 입력
+	
 	
 	//책임분양 인증글 작성창 띄우기
 	@RequestMapping("/write_auth_form.me")
@@ -116,7 +113,7 @@ public class MyfreeController {
 		String email = (String)session.getAttribute("email");
 		Member_listVO member_listVO = MyfreeService.selectMember(email);
 		
-		int confirm_no = confirm_list.getConfirm_no();
+		String confirm_no = confirm_list.getConfirm_no();
 		
 		Myfree_doc_confirmVO myfree_doc_confirm_write = MyfreeService.selectConfirm_write(confirm_no);
 		
@@ -142,7 +139,7 @@ public class MyfreeController {
 		public String free_auth_view(@RequestParam(value="fadoc_no", required=true) int fadoc_no, Model model) {
 		
 		Myfree_authVO auth_view = MyfreeService.selectAuth_view(fadoc_no);
-		int confirm_no = auth_view.getFadoc_confirm_no();
+		String confirm_no = auth_view.getFadoc_confirm_no();
 		Myfree_doc_confirmVO confirm_view = MyfreeService.selectConfirm_view(confirm_no);
 		
 		model.addAttribute("auth_view", auth_view);
@@ -154,10 +151,10 @@ public class MyfreeController {
 	//고객센터
 	@RequestMapping("/customer_service.me")
 	public String customer_service(Model model, HttpSession session) throws Exception { 
-		String email = (String)session.getAttribute("email");
-		Member_listVO member_listVO = MyfreeService.selectMember(email);
+		//String email = (String)session.getAttribute("email");
+		//Member_listVO member_listVO = MyfreeService.selectMember(email);
 		
-		model.addAttribute("member_listVO", member_listVO);
+		//model.addAttribute("member_listVO", member_listVO);
 		
 		return "customer_service";
 	}

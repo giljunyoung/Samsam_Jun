@@ -6,7 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class Myfree_doc_confirmVO {
 
-	private int confirm_no;					// 확정번호
+	private String confirm_no;				// 확정번호
 	private int confirm_fdoc_no;			// 글번호
 	private String confirm_fdoc_s_email;	// 분양자
 	private String confirm_fdoc_r_email;	// 피분양자
@@ -21,10 +21,10 @@ public class Myfree_doc_confirmVO {
 	private String confirm_fdoc_img;		// 이미지
 	
 	
-	public int getConfirm_no() {
+	public String getConfirm_no() {
 		return confirm_no;
 	}
-	public void setConfirm_no(int confirm_no) {
+	public void setConfirm_no(String confirm_no) {
 		this.confirm_no = confirm_no;
 	}
 	public int getConfirm_fdoc_no() {

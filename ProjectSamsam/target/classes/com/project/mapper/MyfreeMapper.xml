@@ -35,14 +35,14 @@
 		SELECT * FROM free_doc WHERE fdoc_email=#{email} order by fdoc_date desc
 	</select>
 	
+	
 	<!-- 책임분양 인증글 작성창 띄우기 - 책임분양 인증현황 테이블 조회 -->
-	<select id="selectConfirm_write" parameterType="int" resultType="Myfree_doc_confirmVO">
+	<select id="selectConfirm_write" parameterType="String" resultType="Myfree_doc_confirmVO">
 		SELECT * FROM free_doc_confirm WHERE confirm_no=#{confirm_no}
 	</select>
 	
+	
 	<!-- 책임분양 인증글 작성 -->
-	
-	
 	<insert id="insertFree_auth" parameterType="Myfree_authVO">
 		<selectKey keyProperty="fadoc_no" order="BEFORE" resultType="int">
 			SELECT nvl(max(fadoc_no), 0)+1 FROM free_auth
@@ -58,13 +58,14 @@
 		SELECT * FROM free_auth WHERE fadoc_no=#{fadoc_no}
 	</select>
 	
-	<select id="selectConfirm_view" parameterType="int" resultType="Myfree_doc_confirmVO">
+	<select id="selectConfirm_view" parameterType="String" resultType="Myfree_doc_confirmVO">
 		SELECT * FROM free_doc_confirm WHERE confirm_no=#{confirm_no}
 	</select>
 	
 	<update id="setReadCountUpdate" parameterType="int">
 		update free_auth set fadoc_readcount=fadoc_readcount+1 where fadoc_no=#{fadoc_no}
 	</update>
+	
 	
 	<!-- 책임분양 이미지 업로드 -->
 	<update id="update_fdoc_img" parameterType="Myfree_doc_confirmVO">

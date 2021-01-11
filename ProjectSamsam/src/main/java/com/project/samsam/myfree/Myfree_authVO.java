@@ -6,7 +6,7 @@ public class Myfree_authVO {
 	
 	private int fadoc_no;			// 글번호
 	private String fadoc_r_email;	// 피분양자
-	private int fadoc_confirm_no;	// 확정번호
+	private String fadoc_confirm_no;	// 확정번호
 	private String fadoc_s_email;	// 분양자
 	private String fadoc_subject;	// 제목
 	private String fadoc_content;	// 글내용
@@ -27,10 +27,10 @@ public class Myfree_authVO {
 	public void setFadoc_r_email(String fadoc_r_email) {
 		this.fadoc_r_email = fadoc_r_email;
 	}
-	public int getFadoc_confirm_no() {
+	public String getFadoc_confirm_no() {
 		return fadoc_confirm_no;
 	}
-	public void setFadoc_confirm_no(int fadoc_confirm_no) {
+	public void setFadoc_confirm_no(String fadoc_confirm_no) {
 		this.fadoc_confirm_no = fadoc_confirm_no;
 	}
 	public String getFadoc_s_email() {

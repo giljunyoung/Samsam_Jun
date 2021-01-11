@@ -333,7 +333,7 @@ html,body {
 										<p class="card-text">책임시작일 : <%=confirm_list.getConfirm_s_date() %></p>
 										
 										<form id="fdoc_img_form" action="fileUpload.me#location" method="post" enctype="multipart/form-data">
-											<input type="hidden" name="confirm_no" value=<%=confirm_list.getConfirm_no() %>>
+											<input type="hidden" name="confirm_no" value=<%=confirm_list.getConfirm_fdoc_no() %>>
 											<input type="file" id="fdoc_img" name="file" multiple="multiple"/>
 										
 										<div class="inputArea">
@@ -367,7 +367,7 @@ html,body {
 									for (int k=0; k < myfree_authVO.size(); k++) {
 										Myfree_authVO auth_list = (Myfree_authVO)myfree_authVO.get(k);
 										
-										if (confirm_list.getConfirm_no() == auth_list.getFadoc_confirm_no())
+										if (confirm_list.getConfirm_no().equals(auth_list.getFadoc_confirm_no()))
 										{
 											if (auth_list.getFadoc_check().equals("인증완료"))
 											{
@@ -416,7 +416,7 @@ html,body {
 								for (int j=0; j < myfree_authVO.size(); j++) {
 									Myfree_authVO auth_list = (Myfree_authVO)myfree_authVO.get(j);
 									
-									if (confirm_list.getConfirm_no() == auth_list.getFadoc_confirm_no())
+									if (confirm_list.getConfirm_no().equals(auth_list.getFadoc_confirm_no()))
 									{
 									
 							%>

@@ -19,11 +19,11 @@
 	</select>
 	
 	<!-- 확정번호 클릭시 상세보기 -->
-	<select id="selectConfirm_detail" parameterType="int" resultType="Myfree_doc_confirmVO">
+	<select id="selectConfirm_detail" parameterType="String" resultType="Myfree_doc_confirmVO">
 		SELECT * FROM free_doc_confirm WHERE confirm_no=#{confirm_no}
 	</select>
 	
-	<select id="selectAuth_detail" parameterType="int" resultType="Myfree_authVO">
+	<select id="selectAuth_detail" parameterType="String" resultType="Myfree_authVO">
 		SELECT * FROM free_auth WHERE fadoc_confirm_no=#{confirm_no} order by fadoc_check asc, fadoc_no desc
 	</select>
 	
@@ -32,11 +32,11 @@
 		SELECT * FROM free_auth WHERE fadoc_no=#{fadoc_no} order by fadoc_check asc, fadoc_no desc
 	</select>
 	
-	<select id="selectAuth_detail_re" parameterType="int" resultType="Myfree_authVO">
+	<select id="selectAuth_detail_re" parameterType="String" resultType="Myfree_authVO">
 		SELECT * FROM free_auth WHERE fadoc_confirm_no=#{confirm_no} order by fadoc_check asc, fadoc_no desc
 	</select>
 	
-	<select id="selectConfirm_detail_re" parameterType="int" resultType="Myfree_doc_confirmVO">
+	<select id="selectConfirm_detail_re" parameterType="String" resultType="Myfree_doc_confirmVO">
 		SELECT * FROM free_doc_confirm WHERE confirm_no=#{confirm_no}
 	</select>
 	

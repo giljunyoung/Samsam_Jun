@@ -35,7 +35,7 @@ public class AdminfreeServiceImpl implements AdminfreeService {
 	}
 	
 	@Override
-	public Myfree_doc_confirmVO selectConfirm_detail(int confirm_no) {
+	public Myfree_doc_confirmVO selectConfirm_detail(String confirm_no) {
 		AdminfreeMapper adminfreeMapper = 
 				sqlSession.getMapper(AdminfreeMapper.class);
 		Myfree_doc_confirmVO myfree_doc_confirm_detail = adminfreeMapper.selectConfirm_detail(confirm_no);
@@ -44,7 +44,7 @@ public class AdminfreeServiceImpl implements AdminfreeService {
 	 
 	
 	@Override
-	public List<Myfree_authVO> selectAuth_detail(int confirm_no) {
+	public List<Myfree_authVO> selectAuth_detail(String confirm_no) {
 		AdminfreeMapper adminfreeMapper = 
 				sqlSession.getMapper(AdminfreeMapper.class);
 		List<Myfree_authVO> myfree_auth_datail = adminfreeMapper.selectAuth_detail(confirm_no);
@@ -62,7 +62,7 @@ public class AdminfreeServiceImpl implements AdminfreeService {
 	}
 	
 	@Override
-	public List<Myfree_authVO> selectAuth_detail_re(int confirm_no) {
+	public List<Myfree_authVO> selectAuth_detail_re(String confirm_no) {
 		AdminfreeMapper adminfreeMapper = 
 				sqlSession.getMapper(AdminfreeMapper.class);
 		List<Myfree_authVO> myfree_auth_datail_re = adminfreeMapper.selectAuth_detail_re(confirm_no);
@@ -71,7 +71,7 @@ public class AdminfreeServiceImpl implements AdminfreeService {
 	}
 	
 	@Override
-	public Myfree_doc_confirmVO selectConfirm_detail_re(int confirm_no) {
+	public Myfree_doc_confirmVO selectConfirm_detail_re(String confirm_no) {
 		AdminfreeMapper adminfreeMapper = 
 				sqlSession.getMapper(AdminfreeMapper.class);
 		Myfree_doc_confirmVO myfree_doc_confirm_detail_re = adminfreeMapper.selectConfirm_detail_re(confirm_no);

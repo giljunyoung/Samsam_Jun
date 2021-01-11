@@ -68,7 +68,7 @@ public class MyfreeServiceImpl implements MyfreeService {
 		return myfree_docVO;
 	}
 	
-	public Myfree_doc_confirmVO selectConfirm_write(int confirm_no) {
+	public Myfree_doc_confirmVO selectConfirm_write(String confirm_no) {
 		MyfreeMapper myfreeMapper = 
 				sqlSession.getMapper(MyfreeMapper.class);
 		Myfree_doc_confirmVO myfree_doc_confirm_write = myfreeMapper.selectConfirm_write(confirm_no);
@@ -94,7 +94,7 @@ public class MyfreeServiceImpl implements MyfreeService {
 		
 		return auth_view;
 	}
-	public Myfree_doc_confirmVO selectConfirm_view(int confirm_no) {
+	public Myfree_doc_confirmVO selectConfirm_view(String confirm_no) {
 		MyfreeMapper myfreeMapper = 
 				sqlSession.getMapper(MyfreeMapper.class);
 		Myfree_doc_confirmVO confirm_view = myfreeMapper.selectConfirm_view(confirm_no);
