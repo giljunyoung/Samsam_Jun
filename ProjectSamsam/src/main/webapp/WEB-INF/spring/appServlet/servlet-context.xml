@@ -12,7 +12,7 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 	
-	<!-- 업로드 패스 설정. 파일이 업로드될 경로이다.-->
+	<!-- 업로드 패스 설정. 마이페이지 책임분양 이미지 파일이 업로드될 경로이다.-->
 	<beans:bean class="java.lang.String" id="uploadPath">
 	<beans:constructor-arg
 		value="C:\Project\Samsam\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ProjectSamsam\resources" />
