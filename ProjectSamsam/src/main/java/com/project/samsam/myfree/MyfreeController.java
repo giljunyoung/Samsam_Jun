@@ -31,55 +31,6 @@ public class MyfreeController {
 	@Resource(name="uploadPath")
 	private String uploadPath;
 	
-	//확인용
-	@RequestMapping("/login.me")
-	public String userCheck(Member_listVO member_listVO, HttpSession session, HttpServletResponse response) throws Exception{
-		int res = MyfreeService.userCheck(member_listVO);
-		
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("text/html; charset=utf-8");
-		PrintWriter writer = response.getWriter();
-		if (res==1) {
-			session.setAttribute("email", member_listVO.getEmail());
-			writer.write("<script>alert('로그인 성공!!'); location.href='./myfree_auth.me';</script>");
-			//return "redirect:/main.me"
-		}
-		else {
-			writer.write("<script>alert('로그인 실패!!'); location.href='./loginform.me';</script>");
-			//return "redirect:/loginform.me
-		}
-		return null;
-	}
-	
-	@RequestMapping("/loginform.me")
-	public String loginForm() throws Exception {
-	return "loginForm";	
-	}
-	
-	@RequestMapping("/joinform.me") 
-	public String joinForm() throws Exception { 
-		return "joinForm";
-	}
-	
-	@RequestMapping("/joinprocess.me")
-	public String insertMember(Member_listVO member_listVO, HttpServletResponse response)
-			throws Exception {
-		int res = MyfreeService.insertMember(member_listVO);
-		System.out.println(res);
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("text/html; charset=utf-8");
-		PrintWriter writer = response.getWriter();
-		if (res == 1)
-		{
-			writer.write("<script>alert('회원가입 성공!!'); location.href='./loginform.me';</script>");
-		}
-		else {
-			writer.write("<script>alert('회원가입 실패!!'); location.href='./joinform.me';</script>");
-		}
-		return null;
-	}
-	
-	
 	//마이페이지 책임분양
 	@RequestMapping("/myfree_auth.me")
 		public String mypage_free_auth(Model model, HttpSession session) throws Exception {
@@ -191,7 +142,6 @@ public class MyfreeController {
 		
 		myfree_doc_confirmVO.setConfirm_fdoc_img(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 		MyfreeService.update_fdoc_img(myfree_doc_confirmVO);
-		System.out.println("1");
 		return "redirect:/myfree_auth.me";
 	}
 	
