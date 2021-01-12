@@ -9,6 +9,9 @@ import com.project.samsam.myfree.Myfree_docVO;
 
 public interface MyfreeService {
 	
+	public int insertMember(Member_listVO member_listVO);
+	public int userCheck(Member_listVO member_listVO);
+	
 		//프로필, 닉네임 조회
 		public Member_listVO selectMember(String email);
 		

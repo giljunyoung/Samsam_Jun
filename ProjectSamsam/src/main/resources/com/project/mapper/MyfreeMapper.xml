@@ -4,6 +4,15 @@
 
 <mapper namespace = "com.project.mapper.MyfreeMapper">
 	
+	<insert id="insertMember" parameterType="Member_listVO">
+		INSERT INTO member_list VALUES
+		(#{email}, #{pw}, #{name}, #{nick}, #{phone}, #{local}, #{grade})
+	</insert>
+	
+	<select id="userCheck" parameterType="Member_listVO" resultType="int">
+		SELECT count(*) FROM member_list where email=#{email} and pw = #{pw}
+	</select>
+	
 	
 	
 	<!-- 프로필, 닉네임 조회 -->
