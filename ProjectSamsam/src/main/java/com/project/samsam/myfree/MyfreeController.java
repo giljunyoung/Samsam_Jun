@@ -107,20 +107,21 @@ public class MyfreeController {
 	}
 	
 	//환급계좌 입력
-	@RequestMapping(value="/insertAccount.me", method=RequestMethod.POST, 
-			produces="application/json;charset=UTF-8")
-	@ResponseBody
-	public Map<String, Object> insertAccount(Myfree_doc_confirmVO myfree_doc_confirmVO) {
-		Map<String, Object> retVal = new HashMap<String, Object>();
-		try {
-			MyfreeService.insertAccount(myfree_doc_confirmVO);
-			
-			retVal.put("res", "OK");
-		}
-		catch (Exception e) {
-			retVal.put("res", "FAIL");
-		}
-		return retVal;
+	@RequestMapping("/updateAccount.me")
+	public String updateAccount(Myfree_doc_confirmVO myfree_doc_confirmVO) throws Exception {
+		
+		MyfreeService.updateAccount(myfree_doc_confirmVO);
+		
+		return "redirect:/myfree_auth.me";
+	}
+	
+	//@환급계좌 삭제
+	@RequestMapping("/deleteAccount.me")
+	public String deleteAccount(Myfree_doc_confirmVO myfree_doc_confirmVO) throws Exception {
+		
+		MyfreeService.deleteAccount(myfree_doc_confirmVO);
+		
+		return "redirect:/myfree_auth.me";
 	}
 	
 	//책임분양 인증글 작성창 띄우기

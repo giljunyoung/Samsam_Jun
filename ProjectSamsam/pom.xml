@@ -180,13 +180,6 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.9.6</version>
 		</dependency>
-		<dependency> 
-   		 <groupId>org.codehaus.jackson</groupId> 
-   		 <artifactId>jackson-mapper-asl</artifactId> 
-   		 <version>1.9.13</version> 
-		</dependency>
-
-		
 		<!-- Jackson JSON Mapper 끝 -->
 		
 		<!-- 이메일 인증 관련정보 추가 시작 -->

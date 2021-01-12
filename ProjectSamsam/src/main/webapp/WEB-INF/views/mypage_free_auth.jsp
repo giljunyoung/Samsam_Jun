@@ -21,93 +21,18 @@
 <meta charset="utf-8">
 <title>마이페이지_책임분양 관리</title>
 
-<script type ="text/javascript" src = "https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script language="javascript">
+//환급계좌 입력
+function update_Account() {
+	document.forms["account_form"].submit();
+}
+</script>
 
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
 	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
 	crossorigin="anonymous">
-	
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-crossorigin="anonymous"></script>
 
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-	crossorigin="anonymous"></script>
-
-
-<script>
-//책임인증글 팝업
-var popupWidth = 850;
-var popupHeight = 900;
-
-var popupX = (window.screen.width / 2) - (popupWidth / 2);
-var popupY= (window.screen.height / 2) - (popupHeight / 2);
-
-</script>
-
-<!-- 새로고침시 스크롤 유지 -->
-<script>
-﻿
-//item click 을 통한 상세 화면 이동관련 함수
-
-function itemClick(itemIndex) {
-
-//쿠키에 관련 내용 저장
-
-var scrollHeightPosition = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-
-setCookie("category", "myCategory"); // 쿠키에 내용을 정의하는 사용자 정의 함수
-
-setCookie("scroll_position", scrollHeightPosition); // 쿠키에 내용을 정의하는 사용자 정의 함수
-
-
-//상세 화면 이동
-
-nextPage(itemIndex); // 페이지 이동하는 사용자 정의 함수
-
-}
-
-
-//body.onload 시 사용하게 될 함수
-
-function afterLoad() {
-
-//쿠키에 저장된 내용 호출
-
-var category = getCookie("category"); // 쿠키의 내용을 불러오는 사용자 정의 함수
-
-var scrollPosition = getCookie("scroll_position"); // 쿠키의 내용을 불러오는 사용자 정의 함수
-
-var pageCategory = 'myCategory'; // 페이지 로딩 시 현제 카테고리 내용
-
-if (category != "" && category != 'undefined' && category == pageCategory &&
-
-scrollPosition != "" && scrollPosition != 'undefined') {
-
-window.scroll(0, scrollPosition); // 또는 body.scrollTop(scrollPosition);
-
-}
-
-//쿠키 내용 초기화
-
-setCookie("category", "");
-
-setCookie("scroll_position", "");
-
-}
-
-﻿</script>
-
-
-<script>
-//새로고침
-function redirect() {
-	location.reload();
-} 
-</script>
 
 
 
@@ -403,16 +328,21 @@ html,body {
 									
 						<div class="row">
 							<%if (confirm_list.getConfirm_account()==null||confirm_list.getConfirm_account()=="") { %>
-							<form id="account_form" method="post">
+							
+							<form action="./updateAccount.me" name="account_form" method="post">
 							<input type="hidden" name="confirm_no" value="<%=confirm_list.getConfirm_no() %>">
 							<label for="confirm_account">환급계좌번호</label>
 							<input type="text" name="confirm_account" id="confirm_account">
-							<input type="button" value="등록" id="insertAccount">
+							<a href="javascript:update_Account()"><input type="button" value="등록" id="update_Account"></a>
 							</form>
 							
 							<%}
 								else {%>
-							<p class= mb-0 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;환급계좌정보 :<%=confirm_list.getConfirm_account() %></p>
+							<p class= mb-0 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;환급계좌정보 : <%=confirm_list.getConfirm_account() %>
+							<button type="button" class="btn btn-outline-danger btn-sm">
+							<a href="deleteAccount.me?confirm_no=<%=confirm_list.getConfirm_no() %>">삭제</a></button>
+							</p>
+							
 							<% } %>
 							<div class="col-md-5"></div>
 							
@@ -589,36 +519,82 @@ html,body {
 	</div>
 		</div>
 	</div>
-<script type = "text/javascript">
 
-//환급계좌 입력 ajax
-$(document).ready(function() {
-	
-	$('#insertAccount').click(function(event) {
-		var params = $("#account_form").serialize();
-		alert(params);
-		jQuery.ajax({
-			url: '/samsam/insertAccount.me',
-			type: 'POST',
-			data : params,
-			contentType : 'application/x-www-form-urlencoded;charset=utf-8',
-			dataType: 'json',
-			success : function(retVal) {
-				if (retVal.res =="OK") {
-					redirect();
-				}
-				else {
-					alert("Insert Fail");
-				}
-			},
-			error:function(request,status,error){
-		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		       }
 
-		});
-	});
-});
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+
+	<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+	crossorigin="anonymous"></script>
+
+
+<script>
+//책임인증글 팝업
+var popupWidth = 850;
+var popupHeight = 900;
+
+var popupX = (window.screen.width / 2) - (popupWidth / 2);
+var popupY= (window.screen.height / 2) - (popupHeight / 2);
 
 </script>
+
+<!-- 새로고침시 스크롤 유지 -->
+<script>
+﻿
+//item click 을 통한 상세 화면 이동관련 함수
+
+function itemClick(itemIndex) {
+
+//쿠키에 관련 내용 저장
+
+var scrollHeightPosition = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+
+setCookie("category", "myCategory"); // 쿠키에 내용을 정의하는 사용자 정의 함수
+
+setCookie("scroll_position", scrollHeightPosition); // 쿠키에 내용을 정의하는 사용자 정의 함수
+
+
+//상세 화면 이동
+
+nextPage(itemIndex); // 페이지 이동하는 사용자 정의 함수
+
+}
+
+
+//body.onload 시 사용하게 될 함수
+
+function afterLoad() {
+
+//쿠키에 저장된 내용 호출
+
+var category = getCookie("category"); // 쿠키의 내용을 불러오는 사용자 정의 함수
+
+var scrollPosition = getCookie("scroll_position"); // 쿠키의 내용을 불러오는 사용자 정의 함수
+
+var pageCategory = 'myCategory'; // 페이지 로딩 시 현제 카테고리 내용
+
+if (category != "" && category != 'undefined' && category == pageCategory &&
+
+scrollPosition != "" && scrollPosition != 'undefined') {
+
+window.scroll(0, scrollPosition); // 또는 body.scrollTop(scrollPosition);
+
+}
+
+//쿠키 내용 초기화
+
+setCookie("category", "");
+
+setCookie("scroll_position", "");
+
+}
+
+﻿</script>
+
+
+	
 </body>
 </html>
