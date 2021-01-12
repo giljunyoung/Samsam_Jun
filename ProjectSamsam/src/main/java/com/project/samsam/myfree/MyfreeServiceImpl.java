@@ -120,9 +120,7 @@ public class MyfreeServiceImpl implements MyfreeService {
 	public void update_fdoc_img(Myfree_doc_confirmVO myfree_doc_confirmVO) {
 		MyfreeMapper myfreeMapper = 
 				sqlSession.getMapper(MyfreeMapper.class);
-		System.out.println("2");
 		int res = myfreeMapper.update_fdoc_img(myfree_doc_confirmVO);
-		System.out.println("3");
 		
 	}
 }

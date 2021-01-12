@@ -182,16 +182,15 @@ public class MyfreeController {
 		String imgUploadPath = uploadPath + File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
-
+		
 		if(file != null) {
 		 fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
 		} else {
 		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
 		}
-		
 		myfree_doc_confirmVO.setConfirm_fdoc_img(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 		MyfreeService.update_fdoc_img(myfree_doc_confirmVO);
-		System.out.println("1");
+		
 		return "redirect:/myfree_auth.me";
 	}
 	
