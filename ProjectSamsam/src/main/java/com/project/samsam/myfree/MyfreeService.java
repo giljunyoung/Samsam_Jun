@@ -12,31 +12,35 @@ public interface MyfreeService {
 	public int insertMember(Member_listVO member_listVO);
 	public int userCheck(Member_listVO member_listVO);
 	
-		//ÇÁ·ÎÇÊ, ´Ğ³×ÀÓ Á¶È¸
+		//í”„ë¡œí•„, ë‹‰ë„¤ì„ ì¡°íšŒ
 		public Member_listVO selectMember(String email);
 		
 		
-		//³ªÀÇ Ã¥ÀÓºĞ¾ç Á¶È¸
+		//ë‚˜ì˜ ì±…ì„ë¶„ì–‘ ì¡°íšŒ
 		public List<Myfree_doc_confirmVO> selectConfirm(String email);
 		
 		
-		//Ã¥ÀÓ ºĞ¾ç ÀÎÁõ °Ô½Ã±Û ³»¿ª
+		//ì±…ì„ ë¶„ì–‘ ì¸ì¦ ê²Œì‹œê¸€ ë‚´ì—­
 		public List<Myfree_authVO> selectAuth(String email);
 		
 		
-		//ÀÛ¼ºÇÑ Ã¥ÀÓºĞ¾ç±Û ¸ñ·Ï Á¶È¸
+		//ì‘ì„±í•œ ì±…ì„ë¶„ì–‘ê¸€ ëª©ë¡ ì¡°íšŒ
 		public List<Myfree_docVO> selectDoc(String email);
 		
-		//Ã¥ÀÓºĞ¾ç ÀÎÁõ±Û ÀÛ¼ºÃ¢ ¶ç¿ì±â - Ã¥ÀÓºĞ¾çÀÎÁõÇöÈ² Å×ÀÌºí Á¶È¸
+		//í™˜ê¸‰ê³„ì¢Œ ì…ë ¥
+		void insertAccount(Myfree_doc_confirmVO myfree_doc_confirmVO);
+		
+		//ì±…ì„ë¶„ì–‘ ì¸ì¦ê¸€ ì‘ì„±ì°½ ë„ìš°ê¸° - ì±…ì„ë¶„ì–‘ì¸ì¦í˜„í™© í…Œì´ë¸” ì¡°íšŒ
 		public Myfree_doc_confirmVO selectConfirm_write(String confirm_no);
 		
-		//Ã¥ÀÓºĞ¾ç ÀÎÁõ±Û ÀÛ¼º
+		//ì±…ì„ë¶„ì–‘ ì¸ì¦ê¸€ ì‘ì„±
 		public int insertFree_auth(Myfree_authVO myfree_authVO);
 		
-		//Ã¥ÀÓºĞ¾ç ÀÎÁõ±Û Á¶È¸
+		//ì±…ì„ë¶„ì–‘ ì¸ì¦ê¸€ ì¡°íšŒ
 		public Myfree_authVO selectAuth_view(int fadoc_no);
 		public Myfree_doc_confirmVO selectConfirm_view(String confirm_no);
 		
-		//ÀÌ¹ÌÁö ÆÄÀÏ ¾÷·Îµå
+		//ì´ë¯¸ì§€ íŒŒì¼ ì—…ë¡œë“œ
 		public void update_fdoc_img(Myfree_doc_confirmVO myfree_doc_confirmVO);
 }
+

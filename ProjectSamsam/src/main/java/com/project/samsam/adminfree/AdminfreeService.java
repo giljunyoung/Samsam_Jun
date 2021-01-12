@@ -7,19 +7,19 @@ import com.project.samsam.myfree.Myfree_authVO;
 import com.project.samsam.myfree.Myfree_doc_confirmVO;
 
 public interface AdminfreeService {
-	//Ã¥ÀÓºĞ¾ç ÀÎÁõ±Û ¸ñ·Ï
+	//ì±…ì„ë¶„ì–‘ ì¸ì¦ê¸€ ëª©ë¡
 	public int getListCount();
 	public List<Myfree_authVO> getAuthList(HashMap<String, Integer> hashmap);
 	
-	//Ã¥ÀÓºĞ¾ç È®Á¤¹øÈ£ Å¬¸¯ »ó¼¼º¸±â
+	//ì±…ì„ë¶„ì–‘ í™•ì •ë²ˆí˜¸ í´ë¦­ ìƒì„¸ë³´ê¸°
 	public Myfree_doc_confirmVO selectConfirm_detail(String confirm_no);
 	public List<Myfree_authVO> selectAuth_detail(String confirm_no);
 	
-	public Myfree_authVO selectAuth_detail_re_re(int fadoc_no);				//»ó¼¼º¸±â ÆäÀÌÁö redirectÇÒ ¶§ »ç¿ë
-	public List<Myfree_authVO> selectAuth_detail_re(String confirm_no);			//»ó¼¼º¸±â ÆäÀÌÁö redirectÇÒ ¶§ »ç¿ë
-	public Myfree_doc_confirmVO selectConfirm_detail_re(String confirm_no);	//»ó¼¼º¸±â ÆäÀÌÁö redirectÇÒ ¶§ »ç¿ë
+	public Myfree_authVO selectAuth_detail_re_re(int fadoc_no);				//ìƒì„¸ë³´ê¸° í˜ì´ì§€ redirectí•  ë•Œ ì‚¬ìš©
+	public List<Myfree_authVO> selectAuth_detail_re(String confirm_no);			//ìƒì„¸ë³´ê¸° í˜ì´ì§€ redirectí•  ë•Œ ì‚¬ìš©
+	public Myfree_doc_confirmVO selectConfirm_detail_re(String confirm_no);	//ìƒì„¸ë³´ê¸° í˜ì´ì§€ redirectí•  ë•Œ ì‚¬ìš©
 	
-	//Ã¥ÀÓºĞ¾ç ÀÎÁõ»óÅÂ
+	//ì±…ì„ë¶„ì–‘ ì¸ì¦ìƒíƒœ
 	public int update_auth_ok(int fadoc_no);
 	public int update_auth_re(int fadoc_no);
 	public int update_auth_no(int fadoc_no);

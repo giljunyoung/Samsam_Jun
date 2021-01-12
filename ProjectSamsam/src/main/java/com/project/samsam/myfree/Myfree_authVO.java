@@ -4,15 +4,15 @@ import java.sql.Date;
 
 public class Myfree_authVO {
 	
-	private int fadoc_no;			// ±Û¹øÈ£
-	private String fadoc_r_email;	// ÇÇºĞ¾çÀÚ
-	private String fadoc_confirm_no;	// È®Á¤¹øÈ£
-	private String fadoc_s_email;	// ºĞ¾çÀÚ
-	private String fadoc_subject;	// Á¦¸ñ
-	private String fadoc_content;	// ±Û³»¿ë
-	private Date fadoc_date;		// ÀÛ¼ºÀÏ
-	private int fadoc_readcount;	// Á¶È¸¼ö
-	private String fadoc_check;		// °Ë¼ö»óÅÂ
+	private int fadoc_no;			// ê¸€ë²ˆí˜¸
+	private String fadoc_r_email;	// í”¼ë¶„ì–‘ì
+	private String fadoc_confirm_no;	// í™•ì •ë²ˆí˜¸
+	private String fadoc_s_email;	// ë¶„ì–‘ì
+	private String fadoc_subject;	// ì œëª©
+	private String fadoc_content;	// ê¸€ë‚´ìš©
+	private Date fadoc_date;		// ì‘ì„±ì¼
+	private int fadoc_readcount;	// ì¡°íšŒìˆ˜
+	private String fadoc_check;		// ê²€ìˆ˜ìƒíƒœ
 	
 	
 	public int getFadoc_no() {

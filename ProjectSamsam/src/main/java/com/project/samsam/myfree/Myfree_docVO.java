@@ -4,19 +4,19 @@ import java.sql.Date;
 
 public class Myfree_docVO {
 	
-	private int fdoc_no; 			// ±Û¹øÈ£
-	private String fdoc_email; 		// ÀÌ¸ŞÀÏ
-	private String fdoc_subject; 	// Á¦¸ñ
-	private String fdoc_content; 	// ±Û ³»¿ë
-	private Date fdoc_date;			// ÀÛ¼ºÀÏ
-	private int fdoc_readcount;		// Á¶È¸¼ö
-	private int fdoc_expiry;		// Ã¥ÀÓ±â°£
-	private String fdoc_code;		// ºĞ¾çÄÚµå
-	private int fdoc_pricd;			// Ã¥ÀÓºñ
-	private String fdoc_big;		// µ¿¹°´ëºĞ·ù
-	private String fdoc_kindof;		// Ç°Á¾
-	private String fdoc_thumbnail;	// ½æ³×ÀÏ
-	private String fdoc_loc;		// Áö¿ª
+	private int fdoc_no; 			// ê¸€ë²ˆí˜¸
+	private String fdoc_email; 		// ì´ë©”ì¼
+	private String fdoc_subject; 	// ì œëª©
+	private String fdoc_content; 	// ê¸€ ë‚´ìš©
+	private Date fdoc_date;			// ì‘ì„±ì¼
+	private int fdoc_readcount;		// ì¡°íšŒìˆ˜
+	private int fdoc_expiry;		// ì±…ì„ê¸°ê°„
+	private String fdoc_code;		// ë¶„ì–‘ì½”ë“œ
+	private int fdoc_pricd;			// ì±…ì„ë¹„
+	private String fdoc_big;		// ë™ë¬¼ëŒ€ë¶„ë¥˜
+	private String fdoc_kindof;		// í’ˆì¢…
+	private String fdoc_thumbnail;	// ì¸ë„¤ì¼
+	private String fdoc_loc;		// ì§€ì—­
 	
 	
 	public int getFdoc_no() {

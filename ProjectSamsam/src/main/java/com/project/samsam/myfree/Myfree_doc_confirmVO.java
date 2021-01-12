@@ -2,23 +2,21 @@ package com.project.samsam.myfree;
 
 import java.sql.Date;
 
-import org.springframework.web.multipart.MultipartFile;
 
 public class Myfree_doc_confirmVO {
 
-	private String confirm_no;				// È®Á¤¹øÈ£
-	private int confirm_fdoc_no;			// ±Û¹øÈ£
-	private String confirm_fdoc_s_email;	// ºĞ¾çÀÚ
-	private String confirm_fdoc_r_email;	// ÇÇºĞ¾çÀÚ
-	private String confirm_fdoc_code;		// ºĞ¾çÄÚµå
-	private int confirm_fdoc_expiry;		// Ã¥ÀÓ±â°£
-	private String confirm_fdoc_price;		// Ã¥ÀÓºñ
-	private Date confirm_s_date;			// Ã¥ÀÓ½ÃÀÛÀÏ
-	private Date confirm_e_date;			// Ã¥ÀÓ¸¸·áÀÏ
-	private String confirm_account;			// È¯±Ş°èÁÂ¹øÈ£
-	private String confirm_big;				// µ¿¹°´ëºĞ·ù
-	private String confirm_fdoc_kindof;		// Ç°Á¾
-	private String confirm_fdoc_img;		// ÀÌ¹ÌÁö
+	private String confirm_no;				// í™•ì •ë²ˆí˜¸
+	private int confirm_fdoc_no;			// ê¸€ë²ˆí˜¸
+	private String confirm_fdoc_s_email;	// ë¶„ì–‘ì
+	private String confirm_fdoc_r_email;	// í”¼ë¶„ì–‘ì
+	private String confirm_fdoc_code;		// ë¶„ì–‘ì½”ë“œ
+	private int confirm_fdoc_expiry;		// ì±…ì„ê¸°ê°„
+	private String confirm_fdoc_price;		// ì±…ì„ë¹„
+	private Date confirm_s_date;			// ì±…ì„ì‹œì‘ì¼
+	private Date confirm_e_date;			// ì±…ì„ë§Œë£Œì¼
+	private String confirm_account;			// í™˜ê¸‰ê³„ì¢Œë²ˆí˜¸
+	private String confirm_fdoc_kindof;		// í’ˆì¢…
+	private String confirm_fdoc_img;		// ì´ë¯¸ì§€
 	
 	
 	public String getConfirm_no() {
@@ -81,12 +79,7 @@ public class Myfree_doc_confirmVO {
 	public void setConfirm_account(String confirm_account) {
 		this.confirm_account = confirm_account;
 	}
-	public String getConfirm_big() {
-		return confirm_big;
-	}
-	public void setConfirm_big(String confirm_big) {
-		this.confirm_big = confirm_big;
-	}
+	
 	public String getConfirm_fdoc_kindof() {
 		return confirm_fdoc_kindof;
 	}

@@ -21,14 +21,17 @@
 <meta charset="utf-8">
 <title>마이페이지_책임분양 관리</title>
 
+<script type ="text/javascript" src = "https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
 	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
 	crossorigin="anonymous">
+	
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-	crossorigin="anonymous"></script>
+integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+crossorigin="anonymous"></script>
+
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
@@ -97,6 +100,15 @@ setCookie("scroll_position", "");
 }
 
 ﻿</script>
+
+
+<script>
+//새로고침
+function redirect() {
+	location.reload();
+} 
+</script>
+
 
 
 <style>
@@ -310,7 +322,7 @@ html,body {
 								
 								<%if (confirm_list.getConfirm_fdoc_img()==null||confirm_list.getConfirm_fdoc_img()=="") { %>
 								<div class="col-md-5">
-									<img src="./resources/images/강아지1.png"
+									<img src="<%=doc_list.getFdoc_thumbnail() %>"
 										class="card-img mt-1 ml-1 mx-1 my-1" alt="...">
 								</div>
 								<%}
@@ -390,8 +402,20 @@ html,body {
 						
 									
 						<div class="row">
+							<%if (confirm_list.getConfirm_account()==null||confirm_list.getConfirm_account()=="") { %>
+							<form id="account_form" method="post">
+							<input type="hidden" name="confirm_no" value="<%=confirm_list.getConfirm_no() %>">
+							<label for="confirm_account">환급계좌번호</label>
+							<input type="text" name="confirm_account" id="confirm_account">
+							<input type="button" value="등록" id="insertAccount">
+							</form>
+							
+							<%}
+								else {%>
 							<p class= mb-0 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;환급계좌정보 :<%=confirm_list.getConfirm_account() %></p>
+							<% } %>
 							<div class="col-md-5"></div>
+							
 							<%if (confirm_list.getConfirm_fdoc_expiry()>checknum) { %>
 							<button type="button" class="btn btn-primary btn-sm">
 								<a href="write_auth_form.me?confirm_no=<%=confirm_list.getConfirm_no()%>">책임인증글 작성</a>
@@ -565,6 +589,36 @@ html,body {
 	</div>
 		</div>
 	</div>
+<script type = "text/javascript">
 
+//환급계좌 입력 ajax
+$(document).ready(function() {
+	
+	$('#insertAccount').click(function(event) {
+		var params = $("#account_form").serialize();
+		alert(params);
+		jQuery.ajax({
+			url: '/samsam/insertAccount.me',
+			type: 'POST',
+			data : params,
+			contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+			dataType: 'json',
+			success : function(retVal) {
+				if (retVal.res =="OK") {
+					redirect();
+				}
+				else {
+					alert("Insert Fail");
+				}
+			},
+			error:function(request,status,error){
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		       }
+
+		});
+	});
+});
+
+</script>
 </body>
 </html>

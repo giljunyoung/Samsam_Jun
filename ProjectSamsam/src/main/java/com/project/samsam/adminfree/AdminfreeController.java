@@ -20,7 +20,7 @@ public class AdminfreeController {
 	private AdminfreeServiceImpl AdminfreeService;
 	
 	
-	//°ü¸®ÀÚ ÆäÀÌÁö Ã¥ÀÓºĞ¾ç
+	//ê´€ë¦¬ì í˜ì´ì§€ ì±…ì„ë¶„ì–‘
 	@RequestMapping("/adminfree_auth.me")
 	public String getAuthlist(Model model, @RequestParam(value="page", required=false, 
 	defaultValue="1") int page) { 
@@ -34,17 +34,17 @@ public class AdminfreeController {
 				new HashMap<String, Integer>();
 		hashmap.put("startrow", startrow);
 		hashmap.put("endrow", endrow);
-		List<Myfree_authVO> authlist = AdminfreeService.getAuthList(hashmap);	//getBoardList¿¡ hashmapÀ» ÆÄ¶ó¹ÌÅÍ·Î Àü´ŞÇÑ´Ù.
+		List<Myfree_authVO> authlist = AdminfreeService.getAuthList(hashmap);	//getBoardListì— hashmapì„ íŒŒë¼ë¯¸í„°ë¡œ ì „ë‹¬í•œë‹¤.
 		
 		
-		//ÃÑ ÆäÀÌÁö ¼ö
-	int maxpage=(int)((double)listcount/limit+0.95); //0.95¸¦ ´õÇØ¼­ ¿Ã¸² Ã³¸®. ±ÛÀÌ 1°³¶óµµ ÀÖÀ¸¸é 1ÆäÀÌÁöÀÌ±â ¶§¹®¿¡.
-	//ÇöÀç ÆäÀÌÁö¿¡ º¸¿©ÁÙ ½ÃÀÛ ÆäÀÌÁö ¼ö(1, 11, 21 µî...)
+		//ì´ í˜ì´ì§€ ìˆ˜
+	int maxpage=(int)((double)listcount/limit+0.95); //0.95ë¥¼ ë”í•´ì„œ ì˜¬ë¦¼ ì²˜ë¦¬. ê¸€ì´ 1ê°œë¼ë„ ìˆìœ¼ë©´ 1í˜ì´ì§€ì´ê¸° ë•Œë¬¸ì—.
+	//í˜„ì¬ í˜ì´ì§€ì— ë³´ì—¬ì¤„ ì‹œì‘ í˜ì´ì§€ ìˆ˜(1, 11, 21 ë“±...)
 	int startpage = (((int) ((double)page / 10 + 0.9)) - 1) * 10 + 1;
-	//ÇöÀç ÆäÀÌÁö¿¡ º¸¿©ÁÙ ¸¶Áö¸· ÆäÀÌÁö ¼ö(10, 20, 30 µî...)
+	//í˜„ì¬ í˜ì´ì§€ì— ë³´ì—¬ì¤„ ë§ˆì§€ë§‰ í˜ì´ì§€ ìˆ˜(10, 20, 30 ë“±...)
 	int endpage = maxpage;
 	
-	if (endpage>startpage+10-1) endpage=startpage+10-1;	//endpage¸¦ ÀçÁ¶Á¤ÇÏ´Â ÀÛ¾÷. ÇÏ´Ü¿¡ µé¾î°¥ ÆäÀÌÁö Á¶Á¤.
+	if (endpage>startpage+10-1) endpage=startpage+10-1;	//endpageë¥¼ ì¬ì¡°ì •í•˜ëŠ” ì‘ì—…. í•˜ë‹¨ì— ë“¤ì–´ê°ˆ í˜ì´ì§€ ì¡°ì •.
 	
 	model.addAttribute("page", page);
 	model.addAttribute("listcount", listcount);
@@ -58,7 +58,7 @@ public class AdminfreeController {
 	
 	
 	
-	//°ü¸®ÀÚ ÆäÀÌÁö »ó¼¼º¸±â
+	//ê´€ë¦¬ì í˜ì´ì§€ ìƒì„¸ë³´ê¸°
 	@RequestMapping("/free_auth_datail.me")
 	public String free_auth_detail(Model model, Myfree_authVO auth_list) throws Exception {
 		int fadoc_no = auth_list.getFadoc_no();
@@ -77,7 +77,7 @@ public class AdminfreeController {
 		return "admin_free_auth_detail";
 	}
 	
-	//Ã¥ÀÓ±Û ÀÎÁõ ¿Ï·á
+	//ì±…ì„ê¸€ ì¸ì¦ ì™„ë£Œ
 	@RequestMapping("/free_auth_ok.me")
 	public String update_auth_ok(Myfree_authVO myfree_authVO) throws Exception {
 		int fadoc_no = myfree_authVO.getFadoc_no();
@@ -86,7 +86,7 @@ public class AdminfreeController {
 		return "redirect:/adminfree_auth.me";
 	}
 	
-	//Ã¥ÀÓ±Û ÀçÀÎÁõ ÇÊ¿ä
+	//ì±…ì„ê¸€ ì¬ì¸ì¦ í•„ìš”
 	@RequestMapping("/free_auth_re.me")
 	public String update_auth_re(Myfree_authVO myfree_authVO) throws Exception {
 		int fadoc_no = myfree_authVO.getFadoc_no();
@@ -95,7 +95,7 @@ public class AdminfreeController {
 		return "redirect:/adminfree_auth.me";
 	}
 	
-	//Ã¥ÀÓ±Û ¹İ·Á
+	//ì±…ì„ê¸€ ë°˜ë ¤
 	@RequestMapping("/free_auth_no.me")
 	public String update_auth_no(Myfree_authVO myfree_authVO) throws Exception {
 		int fadoc_no = myfree_authVO.getFadoc_no();
@@ -104,7 +104,7 @@ public class AdminfreeController {
 		return "redirect:/adminfree_auth.me";
 	}
 	
-	//Ã¥ÀÓ±Û »ó¼¼º¸±â ÀÎÁõ ¿Ï·á
+	//ì±…ì„ê¸€ ìƒì„¸ë³´ê¸° ì¸ì¦ ì™„ë£Œ
 	@RequestMapping("/free_auth_detail_ok.me")
 	public ModelAndView update_auth_detail_ok(Myfree_authVO myfree_authVO) throws Exception {
 		ModelAndView result = new ModelAndView();
@@ -112,7 +112,7 @@ public class AdminfreeController {
 		int fadoc_no = myfree_authVO.getFadoc_no();
 		int res = AdminfreeService.update_auth_ok(fadoc_no);
 		
-		Myfree_authVO myfree_auth_detail_re_re = AdminfreeService.selectAuth_detail_re_re(fadoc_no);	//myfree_doc_confirmVO Á¶È¸ÇÏ±âÀ§ÇØ ÇÊ¿ä
+		Myfree_authVO myfree_auth_detail_re_re = AdminfreeService.selectAuth_detail_re_re(fadoc_no);	//myfree_doc_confirmVO ì¡°íšŒí•˜ê¸°ìœ„í•´ í•„ìš”
 		String confirm_no = myfree_auth_detail_re_re.getFadoc_confirm_no();
 		
 		List<Myfree_authVO> myfree_auth_detail_re = AdminfreeService.selectAuth_detail_re(confirm_no);
@@ -126,7 +126,7 @@ public class AdminfreeController {
 		return result;
 	}
 	
-	//Ã¥ÀÓ±Û »ó¼¼º¸±â ÀçÀÎÁõ ÇÊ¿ä
+	//ì±…ì„ê¸€ ìƒì„¸ë³´ê¸° ì¬ì¸ì¦ í•„ìš”
 	@RequestMapping("/free_auth_detail_re.me")
 	public ModelAndView update_auth_detail_re(Myfree_authVO myfree_authVO) throws Exception {
 		ModelAndView result = new ModelAndView();
@@ -134,7 +134,7 @@ public class AdminfreeController {
 		int fadoc_no = myfree_authVO.getFadoc_no();
 		int res = AdminfreeService.update_auth_re(fadoc_no);
 		
-		Myfree_authVO myfree_auth_detail_re_re = AdminfreeService.selectAuth_detail_re_re(fadoc_no);	//myfree_doc_confirmVO Á¶È¸ÇÏ±âÀ§ÇØ ÇÊ¿ä
+		Myfree_authVO myfree_auth_detail_re_re = AdminfreeService.selectAuth_detail_re_re(fadoc_no);	//myfree_doc_confirmVO ì¡°íšŒí•˜ê¸°ìœ„í•´ í•„ìš”
 		String confirm_no = myfree_auth_detail_re_re.getFadoc_confirm_no();
 		
 		List<Myfree_authVO> myfree_auth_detail_re = AdminfreeService.selectAuth_detail_re(confirm_no);
@@ -147,7 +147,7 @@ public class AdminfreeController {
 		return result;
 	}
 	
-	//Ã¥ÀÓ±Û »ó¼¼º¸±â ¹İ·Á
+	//ì±…ì„ê¸€ ìƒì„¸ë³´ê¸° ë°˜ë ¤
 	@RequestMapping("/free_auth_detail_no.me")
 	public ModelAndView update_auth_detail_no(Myfree_authVO myfree_authVO) throws Exception {
 		ModelAndView result = new ModelAndView();
@@ -155,7 +155,7 @@ public class AdminfreeController {
 		int fadoc_no = myfree_authVO.getFadoc_no();
 		int res = AdminfreeService.update_auth_no(fadoc_no);
 		
-		Myfree_authVO myfree_auth_detail_re_re = AdminfreeService.selectAuth_detail_re_re(fadoc_no);	//myfree_doc_confirmVO Á¶È¸ÇÏ±âÀ§ÇØ ÇÊ¿ä
+		Myfree_authVO myfree_auth_detail_re_re = AdminfreeService.selectAuth_detail_re_re(fadoc_no);	//myfree_doc_confirmVO ì¡°íšŒí•˜ê¸°ìœ„í•´ í•„ìš”
 		String confirm_no = myfree_auth_detail_re_re.getFadoc_confirm_no();
 		
 		List<Myfree_authVO> myfree_auth_detail_re = AdminfreeService.selectAuth_detail_re(confirm_no);
