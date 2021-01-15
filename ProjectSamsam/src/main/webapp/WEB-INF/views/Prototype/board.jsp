@@ -4,20 +4,19 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
-<%@ page import="com.project.samsam.myfree.*" %>
+
 
 <%
 	//String email = (String)session.getAttribute("email");
 	//email.toUpperCase();
-	Member_listVO member_listVO = (Member_listVO)request.getAttribute("member_listVO");
-	Myfree_doc_confirmVO myfree_doc_confirm_write = (Myfree_doc_confirmVO)request.getAttribute("myfree_doc_confirm_write");
+
 %>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>마이페이지 책임분양 관리</title>
+<title>게시판</title>
 
 <!-- 폰트 -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -33,11 +32,6 @@
 <!-- 제이쿼리 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 
-<!-- Summernote -->
-<link rel="stylesheet"
-   href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-   integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-   crossorigin="anonymous">
 
 <style>
 /* 공통으로 사용하는 CSS */
@@ -103,7 +97,7 @@ body {
     padding-bottom: 18px;
     background-color : #fff;
     position : fixed;
-    z-index : 100;
+      z-index : 10000;
     top : 0;
     left : 0;
     right : 0;
@@ -271,7 +265,9 @@ li.dropdown > a {
     bottom: 20px;
     position: relative;
 }
-
+p{
+   text-align : center;
+}
 .fa-heart{
    color : red;
 }
@@ -354,31 +350,6 @@ li.dropdown > a {
 }
 
 /* 각각의 페이지에서 사용할 CSS */
-.btn:not(:disabled):not(.disabled) {
-    cursor: pointer;
-}
-.btn-primary {
-    border-color: #127ba3;
-}
-.btn {
-    border-style: solid;
-    border-width: 0 1px 4px 1px;
-    text-transform: uppercase;
-}
-.btn-primary {
-    color: #fff;
-    background-color: #158cba;
-}
-.btn:not(.disabled):hover {
-    margin-top: 1px;
-    border-bottom-width: 3px;
-}
-.btn-primary:hover {
-    color: #fff;
-    background-color: #117298;
-    border-color: #106a8c;
-}
-
 .list-group {
 	border-bottom: 1px solid rgba(0,0,0,.125);
 }
@@ -401,129 +372,9 @@ li.list-group-item.click > a {
 	text-decoration : none;
 	}
 
-/* 프로필 사진  */
-.profile {
-    text-align: center;
-}
 
-/* 테이블 */
-table {
-    border-collapse: collapse;
-    margin: 0 auto;
-}
-.table{
-    margin-bottom: 0rem;
-}
 
-/* 책임분양내역 */
-.auth_img {
-    -webkit-box-flex: 0;
-    flex: 0 0 45.666667%;
-    max-width: 45.666667%;
-}
-.card-body {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    padding: 1.2rem;
-}
 
-.card-img {
-    width: 380px;
-    height: 253px;
-    border-radius: calc(0.75rem - 1px);
-}
-
-p.card-text {
-    text-align: left;
-    margin-bottom: 5px;
-}
-input#fdoc_img {
-    margin-bottom: 5px;
-    margin-top: 20px;
-}
-.no-gutters {
-    margin-right: 0;
-    margin-left: 0;
-    border: 1px solid rgba(0,0,0,.125);
-}
-.auth-btn {
-    width: 71.45px;
-    height: 29px;
-    padding:1px;
-}
-
-/*책임분양 인증현황*/
-.auth-confirm {
-	border: 1px solid rgba(0,0,0,.125);
-}
-
-*, ::after, ::before {
-    box-sizing: border-box;
-    border-radius: .25rem;
-}
-
-.row.auth-date {
-    justify-content: space-between;
-}
-.s-date {
-    margin-left: 16px;
-}
-.e-date {
-    margin-right: 16px;
-}
-.s-date-label {
-    margin-left: 20px;
-}
-.e-date-label {
-    margin-right: 20px;
-}
-.progress-bar {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    color: #fff;
-    text-align: center;
-    background-color: #158cba;
-    transition: width .6s ease;
-    border
-}
-form.input-account {
-    margin-left: 20px;
-}
-
-.btn-danger {
-    border-color: #ff291d;
-}
-.btn-danger {
-    color: #fff;
-    background-color: #ff4136;
-}
-.btn-danger:hover {
-    color: #fff;
-    background-color: #ff1d10;
-    border-color: #ff1103;
-}
-
-.row.account-auth {
-    justify-content: space-between;
-}
-
-/* summernote */
-.note-editor.note-frame .note-editing-area .note-editable {
-    padding: 10px;
-    overflow: auto;
-    color: #000;
-    background-color: #fff;
-    
-}
 
 </style>
 
@@ -574,7 +425,7 @@ form.input-account {
 	
 	<div class= "search-wrapper">
       <input class="search-box input" type="text" placeholder="Search">
-      <button class="search-box btn1" type="button"><i class="fas fa-search"></i></button>
+      <button class="search-box btn" type="button"><i class="fas fa-search"></i></button>
 	</div>
 	
 	</div><!-- nav-menu -->
@@ -585,68 +436,33 @@ form.input-account {
 			
 			<!-- 왼쪽. 서브메뉴가 들어갈 부분 -->
 			<div class="sidemenu-section">
-				
 			
+			<!-- 현재 페이지인 서브메뉴에  click을 추가하면 됩니다. -->
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item"><a href="/">회원정보</a></li>
 				<li class="list-group-item"><a href="/">작성글관리</a></li>
-				<li class="list-group-item click"><a href="myfree_auth.me">책임분양관리</a></li>
+				<li class="list-group-item click"><a href="/">책임분양관리</a></li>
 				<li class="list-group-item"><a href="/">판매허가번호인증</a></li>
 			</ul>
 			</div>
 			
 			<!-- 오른쪽. 내용이 들어갈 부분 -->
 			<div class="content-section">
-				<h2>책임분양 관리</h2>
-				<br>
-<form action="./write_auth.me#write" method="post" name="write_free_auth_form" enctype="multipart/form-data">
-<input type="hidden" name="fadoc_r_email" value="<%=myfree_doc_confirm_write.getConfirm_fdoc_r_email() %>">
-<input type="hidden" name="fadoc_s_email" value="<%=myfree_doc_confirm_write.getConfirm_fdoc_s_email() %>">
-<input type="hidden" name="fadoc_confirm_no" value="<%=myfree_doc_confirm_write.getConfirm_no() %>">
-<input type="hidden" name="confirm_fdoc_code" value="<%=myfree_doc_confirm_write.getConfirm_fdoc_code() %>">
-<input type="hidden" name="fadoc_check" value="검토중">
-
-<table border="2" width="830px">
-	<tr>
-		<td>
-			<table width="820px" cellspacing="10px">
-				<tr><td height="5px"></td></tr>
-				<tr>
-					<th width="100px" class="text-center" height="15">제목</th>
-					<td width="700px"><input name="fadoc_subject" class="titleFocus" type="text" size="85" ></td>
-				</tr>
-				<tr><td height="5px"></td></tr>
-				<tr>
-					<th width="100px" class="text-center">분양코드</th>
-					<td><%=myfree_doc_confirm_write.getConfirm_fdoc_code() %></td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-				</tr>
-				<tr>
-					<td width="820" colspan="2">
-  						<textarea id="summernote" name="fadoc_content"></textarea>
-						</form>
-					</td>
-				</tr>
-			</table>		
-		</td>
-	</tr>
-</table>
-<br>
-	<center>
-		<button type="button" class="btn btn-primary btn-md"><a href="javascript:write_auth()" style="color:white;">등록하기</a></button>
-		&nbsp;&nbsp;&nbsp;&nbsp;
-		<button type="button" class="btn btn-danger btn-md"><a href="javascript:history.go(-1)" style="color:white;">취소하기</a></button>
-	</center>
-<br>
- 			
- 			</div> <!-- content-section -->
+				
+				
+			<div>내용 들어갈 부분</div>	
+				
+				
+				
+				
+				
+			
+			
+		  </div> <!-- content-section -->
 		</div> <!-- content-wrap -->
 		<footer id="footer">
 			<div>Copyright ©2021 All rights reserved | This template is made with <i class="fas fa-heart"></i> by SamSam</div>
 		</footer>	
-			
 	</div> <!-- main-content -->
 
 
@@ -665,41 +481,39 @@ form.input-account {
 	</div>
 	
 </div><!-- 바디컨텐트 -->
+	
+		
 
 
+
+<!-- 
 <script>
 $(document).ready(function(){
-	$('#login').on('click', function(e){
-	      $('#logout').show();
-		  $('#mypage').show();
-		  $('#login').hide();
-		  $('#signin').hide();
-	  });
-	}) //헤더 상단 로그인 체인지
-
-	$(document).ready(function(){
-	$('#logout').on('click', function(e){
-	       $('#logout').hide();
-		   $('#mypage').hide();
-		   $('#login').show();
-		   $('#signin').show();
-		});
-	}) //헤더 상단 로그아웃 체인지
-
+   console.log("<%= email %>")
+   var session = '<%= email %>'
+   console.log(session);
+   if(session != null || session != ''){
+        $('#logout').show();
+        $('#mypage').show();
+        $('#login').hide();
+        $('#signin').hide();
+   } //헤더 상단 로그인상태 일때
+   else{
+          $('#logout').hide();
+         $('#mypage').hide();
+         $('#login').show();
+         $('#signin').show();
+   }; //헤더 상단 로그아웃상태 일때 
+}); 
 </script>
+ -->
 
-<script>
-//제목에 focus
-$(document).ready(function(){
-  $("input.titleFocus").focus();
-});
-</script>
 
 <!-- 부트스트랩 4.0 js -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-	
 
 <!-- 카카오톡 채널 상담 js -->
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -717,144 +531,8 @@ $(document).ready(function(){
   //]]>
 </script>
 
-<!-- Summernote -->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet"> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
 
 
-
-
-<script>
-
-$('#summernote').summernote({
-	    toolbar: [
-         // [groupName, [list of button]]
-         ['fontname', ['fontname']],
-         ['fontsize', ['fontsize']],
-         ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
-         ['color', ['forecolor','color']],
-         ['table', ['table']],
-         ['para', ['ul', 'ol', 'paragraph']],
-         ['height', ['height']],
-         ['insert',['picture','link','video']],
-         ['view', ['fullscreen', 'help']]
-       ],
-     fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋음체','바탕체'],
-     fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
-     height: 500,                 // 에디터 높이
-     minHeight: null,             // 최소 높이
-     maxHeight: null,             // 최대 높이
-     focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
-     lang: "ko-KR",               // 한글 설정
-     placeholder: '책임분양을 받은 아이의 사진을 포함해서 올려주세요',	//placeholder 설정
-       callbacks: {
-            onImageUpload: function(files, editor, welEditable) {
-                  for (var i = files.length - 1; i >= 0; i--) {
-                     sendFile(files[i], this);
-                  }
-              }
-         }
-       
-});
-
-$("div.note-editable").on('drop',function(e){
-    for(i=0; i< e.originalEvent.dataTransfer.files.length; i++){
-    	sendFile(e.originalEvent.dataTransfer.files[i],$("#summernote")[0]);
-    }
-   e.preventDefault();
-})
-
-function sendFile(file, el) {
-    var form_data = new FormData();
-    form_data.append('file', file);
-	
-    $.ajax({
-      
-      data: form_data,
-      type: "post",
-      url: 'auth_img.me',
-      cache: false,
-      contentType: false,
-      enctype: 'multipart/form-data',
-      processData: false,
-      success: function(url) {
-     		 $(el).summernote('editor.insertImage', url);
-     		 
-      }
-    });
-  }
-		 
-</script>
-
-<script language="javascript">
-function write_auth() {
-	write_free_auth_form.submit();
-}
-</script>
-
-<!-- 새로고침시 스크롤 유지 -->
-<script>
-﻿
-//item click 을 통한 상세 화면 이동관련 함수
-
-function itemClick(itemIndex) {
-
-//쿠키에 관련 내용 저장
-
-var scrollHeightPosition = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-
-setCookie("category", "myCategory"); // 쿠키에 내용을 정의하는 사용자 정의 함수
-
-setCookie("scroll_position", scrollHeightPosition); // 쿠키에 내용을 정의하는 사용자 정의 함수
-
-
-//상세 화면 이동
-
-nextPage(itemIndex); // 페이지 이동하는 사용자 정의 함수
-
-}
-
-
-//body.onload 시 사용하게 될 함수
-
-function afterLoad() {
-
-//쿠키에 저장된 내용 호출
-
-var category = getCookie("category"); // 쿠키의 내용을 불러오는 사용자 정의 함수
-
-var scrollPosition = getCookie("scroll_position"); // 쿠키의 내용을 불러오는 사용자 정의 함수
-
-var pageCategory = 'myCategory'; // 페이지 로딩 시 현제 카테고리 내용
-
-if (category != "" && category != 'undefined' && category == pageCategory &&
-
-scrollPosition != "" && scrollPosition != 'undefined') {
-
-window.scroll(0, scrollPosition); // 또는 body.scrollTop(scrollPosition);
-
-}
-
-//쿠키 내용 초기화
-
-setCookie("category", "");
-
-setCookie("scroll_position", "");
-
-}
-
-﻿</script>
 	
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-

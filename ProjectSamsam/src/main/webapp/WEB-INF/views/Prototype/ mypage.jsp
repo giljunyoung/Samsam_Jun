@@ -249,7 +249,7 @@ li.dropdown > a {
 }
 .search-box.input:focus {outline:none;}
 
-.search-box.btn1 {
+.search-box.btn {
   color : #9494b8;
   text-align : left; 
 }
@@ -265,10 +265,12 @@ li.dropdown > a {
 
 /* footer */
 #footer {
-    margin: 0 auto;
+    margin: 0;
     width: fit-content;
-    bottom: 20px;
-    position: relative;
+    bottom: 55px;
+    position: absolute;
+    left: 50%;
+    margin-left: -336px;
 }
 p{
    text-align : center;
@@ -338,8 +340,8 @@ p{
 .content-section {
     width: 1001px;
     height: max-content;
-    position: relative;
-    left: 100px;
+    position: absolute;
+    left: 199px;
     text-align: left;
     font-size: 14px;
     margin-top: 0px;
@@ -349,37 +351,12 @@ p{
     border-left-color: darkblue;
     border-left: 1px solid #efefef;
     padding-left: 50px;
-    padding-right: 0;
     min-height: 940px;
     padding-top: 200px;
 }
 
-/* 각각의 페이지에서 사용할 CSS */
-.btn:not(:disabled):not(.disabled) {
-    cursor: pointer;
-}
-.btn-primary {
-    border-color: #127ba3;
-}
-.btn {
-    border-style: solid;
-    border-width: 0 1px 4px 1px;
-    text-transform: uppercase;
-}
-.btn-primary {
-    color: #fff;
-    background-color: #158cba;
-}
-.btn:not(.disabled):hover {
-    margin-top: 1px;
-    border-bottom-width: 3px;
-}
-.btn-primary:hover {
-    color: #fff;
-    background-color: #117298;
-    border-color: #106a8c;
-}
 
+/* 각각의 페이지에서 사용할 CSS */
 .list-group {
 	border-bottom: 1px solid rgba(0,0,0,.125);
 }
@@ -405,116 +382,6 @@ li.list-group-item.click > a {
 /* 프로필 사진  */
 .profile {
     text-align: center;
-}
-
-/* 테이블 */
-table {
-    border-collapse: collapse;
-    margin: 0 auto;
-}
-.table{
-    margin-bottom: 0rem;
-}
-
-/* 책임분양내역 */
-.auth_img {
-    -webkit-box-flex: 0;
-    flex: 0 0 45.666667%;
-    max-width: 45.666667%;
-}
-.card-body {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    padding: 1.2rem;
-}
-
-.card-img {
-    width: 380px;
-    height: 253px;
-    border-radius: calc(0.75rem - 1px);
-}
-
-p.card-text {
-    text-align: left;
-    margin-bottom: 5px;
-}
-input#fdoc_img {
-    margin-bottom: 5px;
-    margin-top: 20px;
-}
-.no-gutters {
-    margin-right: 0;
-    margin-left: 0;
-    border: 1px solid rgba(0,0,0,.125);
-}
-.auth-btn {
-    width: 71.45px;
-    height: 29px;
-    padding:1px;
-}
-
-/*책임분양 인증현황*/
-.auth-confirm {
-	border: 1px solid rgba(0,0,0,.125);
-}
-
-*, ::after, ::before {
-    box-sizing: border-box;
-    border-radius: .25rem;
-}
-
-.row.auth-date {
-    justify-content: space-between;
-}
-.s-date {
-    margin-left: 16px;
-}
-.e-date {
-    margin-right: 16px;
-}
-.s-date-label {
-    margin-left: 20px;
-}
-.e-date-label {
-    margin-right: 20px;
-}
-.progress-bar {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    color: #fff;
-    text-align: center;
-    background-color: #158cba;
-    transition: width .6s ease;
-    border
-}
-form.input-account {
-    margin-left: 20px;
-}
-
-.btn-danger {
-    border-color: #ff291d;
-}
-.btn-danger {
-    color: #fff;
-    background-color: #ff4136;
-}
-.btn-danger:hover {
-    color: #fff;
-    background-color: #ff1d10;
-    border-color: #ff1103;
-}
-
-.row.account-auth {
-    justify-content: space-between;
 }
 
 
@@ -568,7 +435,7 @@ form.input-account {
 	
 	<div class= "search-wrapper">
       <input class="search-box input" type="text" placeholder="Search">
-      <button class="search-box btn1" type="button"><i class="fas fa-search"></i></button>
+      <button class="search-box btn" type="button"><i class="fas fa-search"></i></button>
 	</div>
 	
 	</div><!-- nav-menu -->
@@ -579,12 +446,17 @@ form.input-account {
 			
 			<!-- 왼쪽. 서브메뉴가 들어갈 부분 -->
 			<div class="sidemenu-section">
-				
+				<div class="profile">
+					<img
+						src="./resources/img/프로필1.png" width="140" height="140">
+					<h4 class="mt-2"><%=member_listVO.getName() %> / <%=member_listVO.getNick()%></h4>
+				</div>
+			<br> <br>
 			
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item"><a href="/">회원정보</a></li>
 				<li class="list-group-item"><a href="/">작성글관리</a></li>
-				<li class="list-group-item click"><a href="myfree_auth.me">책임분양관리</a></li>
+				<li class="list-group-item click"><a href="/">책임분양관리</a></li>
 				<li class="list-group-item"><a href="/">판매허가번호인증</a></li>
 			</ul>
 			</div>
@@ -609,20 +481,20 @@ form.input-account {
 			<br><br>	
 			<h3>나의 <%=i+1 + "번째"%> 책임분양내역</h3>
 			
-			<table>
+			<table border="1">
 				<tr height="250px">
-					<td width="850px">
-						<div class="card mb-2 ml-2 mr-2 mt-2" style="max-width: 850px">
+					<td width="810px">
+						<div class="card mb-3 ml-2 mt-2" style="max-width: 780px">
 							<div class="row no-gutters">
 								
 								<%if (confirm_list.getConfirm_fdoc_img()==null||confirm_list.getConfirm_fdoc_img()=="") { %>
-								<div class="auth_img">
+								<div class="col-md-5">
 									<img src="<%=doc_list.getFdoc_thumbnail() %>"
 										class="card-img mt-1 ml-1 mx-1 my-1" alt="...">
 								</div>
 								<%}
 								else { %>
-								<div class="auth_img">
+								<div class="col-md-5">
 								<img src="/resource<%=confirm_list.getConfirm_fdoc_img() %>"
 										class="card-img mt-1 ml-1 mx-1 my-1"/>
 								</div>
@@ -637,14 +509,14 @@ form.input-account {
 										<br>
 										<h5 class="card-title">품종 : <%=confirm_list.getConfirm_fdoc_kindof() %></h5>
 										<p class="card-text">분양코드 : <%=confirm_list.getConfirm_fdoc_code() %></p>
-										<p class="card-text">책임비 : <%=confirm_list.getConfirm_fdoc_price() %></p>
+										<p class="card-text">책임시작일 : <%=confirm_list.getConfirm_s_date() %></p>
 										
 										<form id="fdoc_img_form" action="fileUpload.me#location" method="post" enctype="multipart/form-data">
 											<input type="hidden" name="confirm_no" value=<%=confirm_list.getConfirm_no() %>>
 											<input type="file" id="fdoc_img" name="file" multiple="multiple"/>
 										
 										<div class="inputArea">
-											<button type="submit" id="register_Btn" class="btn btn-primary auth-btn btn-sm">
+											<button type="submit" id="register_Btn" class="btn btn-primary btn-sm">
 											사진 등록</button>
 										</div>
 										</form>
@@ -658,22 +530,16 @@ form.input-account {
 			<br> <br>
 			<span id="write"></span>
 			<h3><%=i+1 + "번째 "%> 책임분양 인증현황</h3>
-			<table class="auth-confirm">
+			<table border="1">
 				<tr>
-					<td width=832px>
-						<table align="center">
+					<td width=810px><br>
+						<table border="1" align="center">
 							<tr height="100px">
-								<td width="820px">
-									<div class="row auth-date">
-										<div class="s-date-label ">책임시작일</div>
-										<div class="expiry-label">책임기간</div>
-										<div class="e-date-label">책임만료일</div>
-									</div>
-									<div class="row auth-date">
-										<div class="s-date"><%=confirm_list.getConfirm_s_date() %></div>
-										<div class="expiry"><%=confirm_list.getConfirm_fdoc_expiry() %> 개월</div>
-										<div class="e-date"><%=confirm_list.getConfirm_e_date() %></div>
-									</div>
+								<td width="800px">
+										<div>책임시작일 : <%=confirm_list.getConfirm_s_date() %></div>
+										<div>책임만료일 : <%=confirm_list.getConfirm_e_date() %></div>
+										<div>책임기간 : <%=confirm_list.getConfirm_fdoc_expiry() %> 개월</div>
+										<br>
 									<%
 										double checknum = 0;
 									
@@ -695,46 +561,45 @@ form.input-account {
 											aria-valuenow="<%=(checknum / confirm_list.getConfirm_fdoc_expiry())*100%>" aria-valuemin="0"
 											aria-valuemax="100"><%=(int)checknum%>/<%=confirm_list.getConfirm_fdoc_expiry()%></div>
 									</div>
+									<br>
 								</td>
 							</tr>
 						</table> <br>
 						
 						
 									
-						<div class="row account-auth">
+						<div class="row">
 							<%if (confirm_list.getConfirm_account()==null||confirm_list.getConfirm_account()=="") { %>
 							
-							<form action="./updateAccount.me" name="account_form" method="post" class="input-account">
+							<form action="./updateAccount.me" name="account_form" method="post">
 							<input type="hidden" name="confirm_no" value="<%=confirm_list.getConfirm_no() %>">
-							<label for="confirm_account">환급계좌번호&nbsp;</label>
-							<input type="text" name="confirm_account" id="confirm_account">&nbsp;
-							<a href="javascript:update_Account()"><input type="button" value="등록" id="update_Account" class="btn btn-primary btn-sm" 
-							style="width:45px; height:28px;"></a>
+							<label for="confirm_account">환급계좌번호</label>
+							<input type="text" name="confirm_account" id="confirm_account">
+							<a href="javascript:update_Account()"><input type="button" value="등록" id="update_Account"></a>
 							</form>
 							
 							<%}
 								else {%>
 							<p class= mb-0 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;환급계좌정보 : <%=confirm_list.getConfirm_account() %>
-							<button type="button" class="btn btn-danger btn-sm" style="width:45px; height:28px;">
-							<a href="deleteAccount.me?confirm_no=<%=confirm_list.getConfirm_no() %>" 
-								style="color:white;">삭제</a></button>
+							<button type="button" class="btn btn-outline-danger btn-sm">
+							<a href="deleteAccount.me?confirm_no=<%=confirm_list.getConfirm_no() %>">삭제</a></button>
 							</p>
 							
 							<% } %>
+							<div class="col-md-5"></div>
 							
 							<%if (confirm_list.getConfirm_fdoc_expiry()>checknum) { %>
-							<button type="button" class="btn btn-primary btn-sm" style="width:120px; height:28px; margin-right:20px; margin-bottom:2px">
-								<a href="write_auth_form.me?confirm_no=<%=confirm_list.getConfirm_no()%>" 
-								style="color:white;">책임인증글 작성</a>
+							<button type="button" class="btn btn-primary btn-sm">
+								<a href="write_auth_form.me?confirm_no=<%=confirm_list.getConfirm_no()%>">책임인증글 작성</a>
 							</button>
 							<%}
 							else { %>
-							<button type="button" class="btn btn-primary btn-sm" style="width:120px; height:28px; margin-right:20px; margin-bottom:2px; 
-							pointer-events:none">
+							<button type="button" class="btn btn-primary btn-sm">
 								책임인증 완료
 							</button>
 							<%} %>
 						</div>
+
 						<table class="table table-sm">
 							<thead>
 								<tr>
@@ -777,16 +642,16 @@ form.input-account {
 			<br> <br>
 			<h3>작성한 책임분양글</h3>
 
-			<table style="border: 1px solid rgba(0,0,0,.125);">
+			<table>
 				<tr>
-					<td width="832px">
+					<td width="810px">
 						<table class="table table-sm">
 							<thead>
 								<tr>
-									<th scope="col" class="text-center">글번호</th>
+									<th scope="col">#</th>
 									<th scope="col" class="text-center">제목</th>
-									<th scope="col" class="text-center">작성일</th>
 									<th scope="col" class="text-center">분양코드</th>
+									<th scope="col" class="text-center">작성일</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -796,10 +661,10 @@ form.input-account {
 								
 								%>
 								<tr>
-									<th width="84px" class="text-center" scope="row"><%=doc_list.getFdoc_no() %></th>
-									<td width="416px"><a href="/"><%=doc_list.getFdoc_subject() %></a></td>
-									<td width="188px" class="text-center"><%=doc_list.getFdoc_date() %></td>
-									<td width="143px" class="text-center"><%=doc_list.getFdoc_code() %></td>
+									<th scope="row"><%=doc_list.getFdoc_no() %></th>
+									<td><a href="/"><%=doc_list.getFdoc_subject() %></a></td>
+									<td class="text-center"><%=doc_list.getFdoc_code() %></td>
+									<td class="text-center"><%=doc_list.getFdoc_date() %></td>
 								</tr>
 								<%
 								}
@@ -809,15 +674,14 @@ form.input-account {
 					</td>
 				</tr>
 			</table>
-		
 			
-		  </div> <!-- content-section -->
-		  
-		</div> <!-- content-wrap -->
 		<footer id="footer">
 			<div>Copyright ©2021 All rights reserved | This template is made with <i class="fas fa-heart"></i> by SamSam</div>
 		</footer>	
 			
+		  </div> <!-- content-section -->
+		  
+		</div> <!-- content-wrap -->
 	</div> <!-- main-content -->
 
 

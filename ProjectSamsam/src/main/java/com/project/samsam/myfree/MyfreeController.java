@@ -2,17 +2,20 @@ package com.project.samsam.myfree;
 
 import java.io.File;
 import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -150,6 +153,27 @@ public class MyfreeController {
 
 		return "redirect:/myfree_auth.me";
 		
+	}
+	
+	//썸머노트 이미지 업로드
+	@ResponseBody
+	@PostMapping("/auth_img.me")
+	public void auth_image(MultipartFile file, HttpServletRequest request, 
+			HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=utf-8");
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+		PrintWriter out = response.getWriter();
+		
+		if(file != null) {
+		 fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		} else {
+		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+		
+		out.println("/resource" + File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		out.close();
 	}
 	
 	//책임분양 인증글 조회
