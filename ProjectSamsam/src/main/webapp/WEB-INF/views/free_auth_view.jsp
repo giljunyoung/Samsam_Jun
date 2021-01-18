@@ -62,6 +62,9 @@ hr {
     background-color: #ff1d10;
     border-color: #ff1103;
 }
+hr {
+	border: 1px solid rgba(0,0,0,.125);
+}
 </style>
 </head>
 <body>

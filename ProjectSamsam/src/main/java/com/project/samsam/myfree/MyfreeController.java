@@ -44,7 +44,7 @@ public class MyfreeController {
 		PrintWriter writer = response.getWriter();
 		if (res==1) {
 			session.setAttribute("email", member_listVO.getEmail());
-			writer.write("<script>alert('로그인 성공!!'); location.href='./myfree_auth.me';</script>");
+			writer.write("<script>alert('로그인 성공!!'); location.href='./adminfree_auth.me';</script>");
 			//return "redirect:/main.me"
 		}
 		else {

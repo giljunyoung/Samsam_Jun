@@ -416,17 +416,50 @@ table {
     margin-bottom: 0rem;
 }
 
+.table-sm td, .table-sm th {
+    padding: .3rem;
+    padding-left: 10px;
+}
+th.text-center {
+    height: 45px;
+    padding-bottom: 10px;
+}
+table.auth-confirm a {
+    color: black;
+}
+table.auth-confirm a:hover {
+    color: #0056b3;
+}
+table.doc_table a {
+	 color: black;
+}
+table.doc_table a:hover {
+    color: #0056b3;
+}
+.table-sm td {
+    height: 40px;
+    padding-top: 7px;
+}
+
+
 /* 책임분양내역 */
 .auth_img {
     -webkit-box-flex: 0;
     flex: 0 0 45.666667%;
     max-width: 45.666667%;
 }
+.card {
+	border: 0;
+}
 .card-body {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     padding: 1.2rem;
+    margin-top: -35px;
+    margin-left: 30px;
+    padding-bottom: 10px;
+    width: 400px;
 }
 
 .card-img {
@@ -446,7 +479,7 @@ input#fdoc_img {
 .no-gutters {
     margin-right: 0;
     margin-left: 0;
-    border: 1px solid rgba(0,0,0,.125);
+    border: 0;
 }
 .auth-btn {
     width: 71.45px;
@@ -456,7 +489,7 @@ input#fdoc_img {
 
 /*책임분양 인증현황*/
 .auth-confirm {
-	border: 1px solid rgba(0,0,0,.125);
+	border: 0;
 }
 
 *, ::after, ::before {
@@ -479,6 +512,9 @@ input#fdoc_img {
 .e-date-label {
     margin-right: 20px;
 }
+.expiry {
+    margin-bottom: 10px;
+}
 .progress-bar {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -494,7 +530,6 @@ input#fdoc_img {
     text-align: center;
     background-color: #158cba;
     transition: width .6s ease;
-    border
 }
 form.input-account {
     margin-left: 20px;
@@ -518,6 +553,99 @@ form.input-account {
 }
 
 
+.textbox input:focus {
+	border-bottom: solid 2px #bdbdbd;
+}
+
+.textbox {
+	display: flex;
+	align-items: center;
+	margin-bottom: 5px;
+	margin-top: 25px;
+}
+
+.textbox input[type="button"] {
+	display: inline-block;
+	padding: .5em .75em;
+	width: 57px;
+	height: 41px;
+	margin: 0px;
+	color: #999;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #fdfdfd;
+	cursor: pointer;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+}
+
+/*라벨디자인 첨부 */
+.textbox label[for="fdoc_img"]{ 
+	display: inline-block;
+	padding: .5em .75em;
+	color: #999;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #fdfdfd;
+	cursor: pointer;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+	width: 50px;
+    height: 38px;
+    margin : 0;
+    text-align: center;
+    margin-left: 5px;
+}
+/*파일필드 숨기기*/
+.textbox input[type="file"] { 
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+.textbox[name="button_1"] label[for="biz_img"] {
+	display: inline-block;
+	padding: .5em .15em;
+	width: 50px;
+	height: 28px;
+	color: #999;
+	font-size: inherit;
+	text-align: center;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #fdfdfd;
+	cursor: pointer;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+}
+
+/* 파일 첨부 버튼 */
+.textbox .upload-name {
+	display: inline-block;
+	padding: .5em .15em; /* label의 패딩값과 일치 */
+	font-size: inherit;
+	font-family: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #f5f5f5;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+	appearance: none;
+}
+.h3, h3 {
+    font-size: 1.75rem;
+    margin-bottom: 25px;
+}
 
 </style>
 
@@ -606,7 +734,7 @@ form.input-account {
 				Myfree_docVO doc_list=(Myfree_docVO)myfree_docVO.get(i);
 				
 			%>
-			<br><br>	
+			<br><br>
 			<h3>나의 <%=i+1 + "번째"%> 책임분양내역</h3>
 			
 			<table>
@@ -631,22 +759,39 @@ form.input-account {
 								%>
 								
 								
-								<div class="col-md-4">
+								<div class="col-md-5">
 									<div class="card-body">
 										<br>
 										<br>
-										<h5 class="card-title">품종 : <%=confirm_list.getConfirm_fdoc_kindof() %></h5>
-										<p class="card-text">분양코드 : <%=confirm_list.getConfirm_fdoc_code() %></p>
-										<p class="card-text">책임비 : <%=confirm_list.getConfirm_fdoc_price() %></p>
+										<h4 class="card-title">품종&nbsp;&nbsp;  <%=confirm_list.getConfirm_fdoc_kindof() %></h4>
+											<div class="row">
+										<p class="card-text" style="font-size:16px;margin-left: 17px;">분양코드</p>
+										<p class="card-text" style="font-size:16px;margin-left: 5px;"><%=confirm_list.getConfirm_fdoc_code() %></p>
+											</div>
+											<div class="row">
+										<p class="card-text" style="font-size:16px;margin-left: 17px;">분양자</p>
+										<p class="card-text" style="font-size:16px;margin-left: 20px;"><%=confirm_list.getConfirm_fdoc_s_email() %></p>
+											</div>
+											<div class="row">
+										<p class="card-text" style="font-size:16px;margin-left: 17px;">책임비</p>
+										<p class="card-text" style="font-size:16px;margin-left: 20px;"><%=confirm_list.getConfirm_fdoc_price() %></p>
+											</div>
 										
 										<form id="fdoc_img_form" action="fileUpload.me#location" method="post" enctype="multipart/form-data">
 											<input type="hidden" name="confirm_no" value=<%=confirm_list.getConfirm_no() %>>
-											<input type="file" id="fdoc_img" name="file" multiple="multiple"/>
+											
+											<div class="textbox preview-image" name="button_1">
+											<input class="upload-name" name="biz_img" value="사진 선택" disabled="disabled">
+											<label for="fdoc_img">첨부</label>
+											
+											<input type="file" id="fdoc_img" name="file" multiple="multiple" accept="img/*" class="upload-hidden"/>
+														<button type="submit" id="register_Btn"
+															class="btn btn-primary auth-btn btn-sm"
+															style="width: 50px; height: 37px; margin-left: 5px;">
+															등록</button>
+													</div>
 										
-										<div class="inputArea">
-											<button type="submit" id="register_Btn" class="btn btn-primary auth-btn btn-sm">
-											사진 등록</button>
-										</div>
+										
 										</form>
 									</div>
 								</div>
@@ -655,7 +800,7 @@ form.input-account {
 					</td>
 			</table>
 
-			<br> <br>
+			<br><br><br>
 			<span id="write"></span>
 			<h3><%=i+1 + "번째 "%> 책임분양 인증현황</h3>
 			<table class="auth-confirm">
@@ -735,6 +880,7 @@ form.input-account {
 							</button>
 							<%} %>
 						</div>
+						<br>
 						<table class="table table-sm">
 							<thead>
 								<tr>
@@ -768,16 +914,17 @@ form.input-account {
 					</td>
 				</tr>
 			</table>
+			<br><br>
 							<%
 			}
 		}
 						%>
 					
 			
-			<br> <br>
+			<br>
 			<h3>작성한 책임분양글</h3>
 
-			<table style="border: 1px solid rgba(0,0,0,.125);">
+			<table class="doc_table">
 				<tr>
 					<td width="832px">
 						<table class="table table-sm">
@@ -796,7 +943,7 @@ form.input-account {
 								
 								%>
 								<tr>
-									<th width="84px" class="text-center" scope="row"><%=doc_list.getFdoc_no() %></th>
+									<td width="84px" class="text-center" scope="row"><%=doc_list.getFdoc_no() %></td>
 									<td width="416px"><a href="/"><%=doc_list.getFdoc_subject() %></a></td>
 									<td width="188px" class="text-center"><%=doc_list.getFdoc_date() %></td>
 									<td width="143px" class="text-center"><%=doc_list.getFdoc_code() %></td>
