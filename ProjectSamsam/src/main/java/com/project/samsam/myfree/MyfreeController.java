@@ -35,6 +35,11 @@ public class MyfreeController {
 	private String uploadPath;
 	
 	//확인용
+	@RequestMapping("/home.me")
+	public String main() throws Exception {
+		return "Prototype/main";
+	}
+	
 	@RequestMapping("/login.me")
 	public String userCheck(Member_listVO member_listVO, HttpSession session, HttpServletResponse response) throws Exception{
 		int res = MyfreeService.userCheck(member_listVO);
@@ -54,7 +59,11 @@ public class MyfreeController {
 		return null;
 	}
 	
-	@RequestMapping("/loginform.me")
+	
+	
+	
+	
+	@RequestMapping("/loginForm.me")
 	public String loginForm() throws Exception {
 	return "loginForm";	
 	}
@@ -82,6 +91,10 @@ public class MyfreeController {
 		return null;
 	}
 	
+	@RequestMapping("/hospital_map.me")
+	public String hospital_map() throws Exception {
+		return "JunYoung/hospital_map";
+	}
 	
 	//마이페이지 책임분양
 	@RequestMapping("/myfree_auth.me")

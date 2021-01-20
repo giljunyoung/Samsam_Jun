@@ -658,30 +658,29 @@ form.input-account {
 			<a href="loginForm.me"><input type="button" class= "header_btn" id="login" value="로그인"></a>
 			<a href="home.me"><input type="button" class= "header_btn" id="logout" value="로그아웃"></a>
 			<a href="joinForm.me"><input type="button" class= "header_btn" id="signin" value="회원가입"></a>
-			<a href="myfree_auth.me"><input type="button" class= "header_btn" id="mypage" value="마이페이지"></a>
+			<a href="mypage.me"><input type="button" class= "header_btn" id="mypage" value="마이페이지"></a>
 			<a href="customer_service.me"><input type="button" class= "header_btn" id="gocen" value="고객센터"></a>
 		</div>
-	
-	
-	<div class="nav-menu">
+
+			<div class="nav-menu">
 				<ul class="sticky-wrapper">
-					<li class="dropdown"><a href="main.me">HOME</a></li>
-					<li class="dropdown"><a href="board.me">분양</a>
+					<li class="dropdown"><a href="home.me">HOME</a></li>
+					<li class="dropdown"><a href="home_list.bo">분양</a>
 						<ul class="dropdown-menu board">
-							<li><a href="#">&nbsp;&nbsp;가정분양</a></li>
-							<li><a href="#">책임분양</a></li>
-							<li><a href="#">업체분양</a></li>
+							<li><a href="home_list.bo">&nbsp;&nbsp;가정분양</a></li>
+							<li><a href="fdoclist.bo">책임분양</a></li>
+							<li><a href="selladopt_list.bo">업체분양</a></li>
 						</ul></li>
-					<li class="dropdown"><a href="care.me">보호소</a>
+					<li class="dropdown"><a href="/SJ/pet_list">보호소</a>
 						<ul class="dropdown-menu care">
-							<li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;보호소</a></li>
-							<li><a href="#">파양</a></li>
-							<li><a href="#">실종</a></li>
+							<li><a href="/SJ/pet_list">&nbsp;&nbsp;&nbsp;&nbsp;보호소</a></li>
+							<li><a href="/SJ/payang/list">파양</a></li>
+							<li><a href="/SJ/missing/list">실종</a></li>
 						</ul></li>
-					<li class="dropdown"><a href="community.me">커뮤니티</a>
+					<li class="dropdown"><a href="doclist.bo">커뮤니티</a>
 						<ul class="dropdown-menu commu">
-							<li><a href="#">&nbsp;자유게시판</a></li>
-							<li><a href="#">책임분양인증</a></li>
+							<li><a href="doclist.bo">&nbsp;자유게시판</a></li>
+							<li><a href="auth_fdoc.bo">책임분양인증</a></li>
 						</ul></li>
 				</ul>
 				
